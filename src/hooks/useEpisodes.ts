@@ -13,7 +13,7 @@ const useEpisode = () => {
   const { data, error, mutate } = useSWR<EpisodeApiResponse>(
     "/episode",
     fetcher,
-    { revalidateIfStale: false, refreshWhenHidden: false }
+    { revalidateIfStale: false, revalidateOnFocus: false }
   );
 
   const deleteEpisode = (id: number) => {

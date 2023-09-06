@@ -12,7 +12,7 @@ const useCharacter = () => {
   const { data, error, mutate } = useSWR<CharactersApiResponse>(
     `/character`,
     fetcher,
-    { revalidateIfStale: false }
+    { revalidateIfStale: false, revalidateOnFocus: false }
   );
 
   const addCharacter = (character: AddCharacterPayload) => {
