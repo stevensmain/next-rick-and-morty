@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { Label } from "@/components/ui/label";
-import authStore from "@/store/auth";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import authStore from "@/store/auth";
 
 interface FormState {
   email: string;
@@ -29,32 +30,39 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid w-full items-center gap-4">
-        <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            id="email"
-            placeholder="Enter your email address"
-            {...register("email")}
-          />
-        </div>
-        <div className="flex flex-col space-y-1.5">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="passwword"
-            id="passwword"
-            placeholder="Enter your password"
-            {...register("password")}
-          />
-        </div>
-      </div>
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Iniciar sesión</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="email"
+                id="email"
+                placeholder="Enter your email address"
+                {...register("email")}
+              />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="passwword"
+                id="passwword"
+                placeholder="Enter your password"
+                {...register("password")}
+              />
+            </div>
+          </div>
 
-      <Button className="mt-3" type="submit">
-        Submit
-      </Button>
-    </form>
+          <Button className="mt-3" type="submit">
+            Submit
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 

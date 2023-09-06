@@ -1,19 +1,26 @@
 "use client";
 
-import LoginForm from "@/components/auth/login-form";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+const LoginForm = dynamic(() => import("@/components/auth/login-form"), {
+  ssr: false,
+});
+import authStore from "@/store/auth";
 
 const Login = () => {
+  const { user } = authStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [router, user]);
+
   return (
     <section className="grid place-content-center">
-      <Card className="w-[350px]">
-        <CardHeader>
-          <CardTitle>Iniciar sesión</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <LoginForm />
-        </CardContent>
-      </Card>
+      <LoginForm />
     </section>
   );
 };

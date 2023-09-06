@@ -10,14 +10,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import useEpisode from "@/hooks/useEpisodes";
+import authStore from "@/store/auth";
 import { Episode, EpisodesSortBy } from "@/types/episodes";
-import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
-export default function Home() {
-  const { episodes, isLoading } = useEpisode();
+export default function Episodes() {
   const [sortingBy, setSortingBy] = useState<EpisodesSortBy>(
     EpisodesSortBy.NONE
   );
+  const { episodes, isLoading } = useEpisode();
+  const { user } = authStore();
+  const router = useRouter();
 
   const handleSorting = (key: EpisodesSortBy) => {
     const newSortingValue = sortingBy === key ? EpisodesSortBy.NONE : key;
@@ -37,6 +41,16 @@ export default function Home() {
       return extractProperty(a).localeCompare(extractProperty(b));
     });
   }, [episodes, sortingBy]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [router, user]);
+
+  if (!user) {
+    return <></>;
+  }
 
   if (isLoading) {
     return null;
