@@ -3,25 +3,44 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  --foreground-rgb: 255, 255, 255;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+
+  /* Colors */
+  --rich-black: hsl(206, 54%, 11%);
+  --dark-electric-blue: hsl(191, 69%, 28%);
+  --light-green: hsl(116, 100%, 97%);
+  --acid-green: hsl(105, 84%, 70%);
+  --blue: hsl(191, 100%, 74%);
+
+  /* Border */
+  --border: 105 84% 70%;
+  --radius: 0.5rem;
+
+  /* Buttons */
+  --primary: 105 84% 70%;
+  --primary-foreground: 191 69% 28%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Card */
+  --card: 191 69% 28%;
+  --card-foreground: 105 84% 70%;
+
+  /* Popover, Dropdown Menu */
+  --popover: 191 69% 28%;
+  --popover-foreground: 206 54% 11%;
+
+  --border: 105 84% 70%;
+  --input: 214.3 31.8% 91.4%;
+
+  --accent-foreground: 105 84% 70%;
+  --foreground: 105 84% 70%;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--rich-black);
 }
