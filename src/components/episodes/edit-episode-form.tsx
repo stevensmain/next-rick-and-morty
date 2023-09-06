@@ -39,9 +39,7 @@ export function EditEpisodeForm() {
 
   const onSubmit: SubmitHandler<EditEpisodePayload> = (data) => {
     if (!currentEpisode) return;
-
     editEpisode(currentEpisode?.id, data);
-    setEpisode(null);
     closeModal();
     toast({
       title: "You submitted the following values:",
