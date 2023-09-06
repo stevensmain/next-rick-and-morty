@@ -23,7 +23,7 @@ export default function RootLayout({
         <link rel="icon" href="./favicon.ico" />
       </head>
       <body className={inter.className}>
-        <header className="w-full flex mb-16">
+        <header className="w-full flex">
           <Link href="/" aria-label="home" className="inline-flex mx-auto">
             <Image
               src="/logo.png"
@@ -33,7 +33,7 @@ export default function RootLayout({
             />
           </Link>
         </header>
-        {children}
+        <main className="py-14">{children}</main>
       </body>
     </html>
   );

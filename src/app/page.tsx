@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto">
-      <div className="flex justify-evenly">
+      <div className="flex flex-col gap-6 md:gap-0 md:flex-row md:justify-evenly">
         <LinkCard title="Characters" url="/characters" img="/characters.jpg" />
         <LinkCard title="Episodes" url="/episodes" img="/episodes.jpg" />
       </div>
